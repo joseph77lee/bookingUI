@@ -1,0 +1,29 @@
+<div class="container mx-auto mt-5">
+  <h2 class="text-lg font-bold mb-4">Booking List</h2>
+
+  <table class="table-auto w-full">
+    <thead>
+      <tr class="bg-gray-200">
+        <th class="px-4 py-2">Customer Name</th>
+        <th class="px-4 py-2">Start Date</th>
+        <th class="px-4 py-2">End Date</th>
+        <th class="px-4 py-2">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let booking of bookings" class="border-b">
+        <td class="px-4 py-2">{{ booking.customerName }}</td>
+        <td class="px-4 py-2">{{ booking.startDate | date }}</td>
+        <td class="px-4 py-2">{{ booking.endDate | date }}</td>
+        <td class="px-4 py-2">
+          <button
+            (click)="deleteBooking(booking.id)"
+            class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded"
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

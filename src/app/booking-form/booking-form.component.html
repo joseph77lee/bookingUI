@@ -1,0 +1,114 @@
+<div class="container mx-auto mt-5">
+  <h2 class="text-lg font-bold mb-4">Add Booking</h2>
+  <form [formGroup]="bookingForm" (ngSubmit)="onSubmit()" class="space-y-4">
+    <div>
+      <label for="customerName" class="block text-sm font-medium text-gray-700"
+        >Customer Name</label
+      >
+      <input
+        type="text"
+        formControlName="customerName"
+        class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+      />
+    </div>
+
+    <div>
+      <label
+        for="customerAddress"
+        class="block text-sm font-medium text-gray-700"
+        >Customer Address</label
+      >
+      <input
+        type="text"
+        formControlName="customerAddress"
+        class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+      />
+    </div>
+
+    <div class="mb-4">
+      <label for="timeZone" class="block text-sm font-medium text-gray-700"
+        >Time Zone</label
+      >
+      <select
+        id="timeZone"
+        formControlName="timeZone"
+        class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+      >
+        <option value="" disabled>Select Time Zone</option>
+        <option *ngFor="let timeZone of timeZones" [value]="timeZone">
+          {{ timeZone }}
+        </option>
+      </select>
+    </div>
+
+    <div>
+      <label for="startDate" class="block text-sm font-medium text-gray-700"
+        >Start Date</label
+      >
+      <input
+        type="datetime-local"
+        formControlName="startDate"
+        class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+      />
+    </div>
+
+    <div>
+      <label for="endDate" class="block text-sm font-medium text-gray-700"
+        >End Date</label
+      >
+      <input
+        type="datetime-local"
+        formControlName="endDate"
+        class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+      />
+    </div>
+
+    <div>
+      <label for="cost" class="block text-sm font-medium text-gray-700"
+        >Cost</label
+      >
+      <input
+        type="number"
+        formControlName="cost"
+        class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+      />
+    </div>
+    <div>
+      <label for="paymentType" class="block text-sm font-medium text-gray-700"
+        >Payment Type</label
+      >
+      <select
+        formControlName="paymentType"
+        class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+      >
+        <option value="" disabled>Select Payment Type</option>
+        <option value="Credit Card">Credit Card</option>
+        <option value="Debit Card">Debit Card</option>
+        <option value="Cash">Cash</option>
+      </select>
+    </div>
+    <div>
+      <button
+        type="submit"
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+      >
+        Submit
+      </button>
+    </div>
+  </form>
+  <div
+    *ngIf="successMessage"
+    class="p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg"
+    role="alert"
+  >
+    {{ successMessage }}
+  </div>
+
+  <div
+    *ngIf="errorMessage"
+    class="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg"
+    role="alert"
+  >
+    {{ errorMessage }}
+  </div>
+</div>
